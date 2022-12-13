@@ -1,0 +1,38 @@
+{% load static %}
+<footer class="bg-dark text-light">
+  <div class="container">
+    <div class="main-footer">
+      <div>
+        <h4>Excel Compare</h4>
+        <p>
+          Excel makes the pesky taks of file manipulation <br />
+          and storage easy even for the oldest of senior citizens.
+        </p>
+        <img src="../IMG/Group 14.png" alt="" />
+      </div>
+      <div>
+        <h6>Useful Links</h6>
+        <ul>
+          <li><a href="{% url 'home_page' %}">Home</a></li>
+          <li><a href="{% url 'about_page' %}">About</a></li>
+          <li><a href="{% url 'documentation_page' %}">Documentation</a></li>
+          <li><a href="{% url 'contact_page' %}">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p>
+          123 ABC street, Off New road <br />
+          <span class="d-flex align-items-center"
+            ><i class="bi bi-envelope mt-1"></i
+            ><span class="ms-1">example@gmail.com</span></span
+          >
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="sub-footer bg-secondary">
+    <div class="container p-3 text-center">
+      <small>&copy; Copyright {% now "Y" %} Excel Compare</small>
+    </div>
+  </div>
+</footer>

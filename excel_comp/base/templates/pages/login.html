@@ -1,0 +1,13 @@
+{% extends 'base.html' %} {% block content %}
+<form method="POST">
+  <div class="d-block text-center">
+    <h3 class="m-0 p-0 mb-2">Welcome Back!</h3>
+    <h4 class="m-0 p-0 mb-3" style="color: #2c8578">Sign In Here</h4>
+  </div>
+  {% csrf_token %} {{form.as_p}}
+  <button>Login</button>
+  <div class="d-block text-center mt-3">
+    <small>New here? <a href="{% url 'register_page' %}">Sign Up</a></small>
+  </div>
+</form>
+{% endblock %}

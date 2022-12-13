@@ -1,0 +1,168 @@
+{% extends 'base.html' %} {% block content %}{% load static %}
+<div class="row">
+  <div class="col-3">
+    <ul class="side-bar list-group">
+      <li class="list-group-item">
+        <a href="{% url 'documentation_page' %}" style="font-weight: bolder"
+          >Welcome</a
+        >
+      </li>
+      <li class="list-group-item">
+        <a href="#overview" style="font-weight: bolder">Overview</a>
+      </li>
+      <li class="list-group-item">
+        <a href="#getting-started" style="font-weight: bolder"
+          >Getting Started</a
+        >
+      </li>
+      <li class="list-group-item">
+        <a href="#comparisons" style="font-weight: bolder">Comparisons</a>
+        <ul class="nestedlist list-group my-2">
+          <li class="list-group-item">
+            <a href="#simple-example">Simple Example</a>
+          </li>
+          <li class="list-group-item">
+            <a href="#creating-comparison">Creating Comparisons</a>
+          </li>
+          <li class="list-group-item">
+            <a href="#interpreting-response">Interpreting the response</a>
+          </li>
+          <li class="list-group-item">
+            <a href="#finishing-up">Finishing up</a>
+          </li>
+        </ul>
+      </li>
+      <li class="list-group-item">
+        <a href="#security-auth" style="font-weight: bolder"
+          >Security and Authentication</a
+        >
+      </li>
+    </ul>
+  </div>
+  <div class="col-9">
+    <section class="welcome mb-5">
+      <h1 style="font-weight: bolder; color: rgb(37, 111, 101)">
+        Documentation
+      </h1>
+      <div
+        class="container rounded p-4"
+        style="background-color: rgb(185, 214, 210)"
+      >
+        <h5>Quelea2 is a leading tool for comparing Excel documents.</h5>
+        <ul class="m-0">
+          <li>From this page you can read about and explore the API.</li>
+          <li>
+            Logging in would allow you to compare, merge, store and download the
+            excel files.
+          </li>
+        </ul>
+      </div>
+    </section>
+    <hr />
+    <section class="overview my-5" id="overview">
+      <h2 style="font-weight: bolder">Overview</h2>
+      <p>
+        Quelea2 Excel Compare is an online platform for comparing Excel
+        document. It accepts pair of documents and returns a comparison viewer
+        with the files displayed side by side. The comparison viewer is
+        embeddable, and displays a side-by-side or vertical comparison of the
+        documents. The documents are displayed in their original format, with
+        changes highlighted.
+      </p>
+    </section>
+    <hr />
+    <section class="getting-started my-5" id="getting-started">
+      <h2 style="font-weight: bolder">Getting Started</h2>
+      <p class="getting-startedp1">
+        To get started, <a href="">log in</a> or
+        <a href="">create an account</a>. If you have a question or need help,
+        <a href="">contact us</a> or email us at
+        <a href="">support@quelea2.com</a>
+      </p>
+      <p class="getting-startedp2">
+        Once logged in, select the option to compare and you will be greeted
+        with the comparison page.
+      </p>
+    </section>
+    <hr />
+    <section class="comparisons my-5" id="comparisons">
+      <h2 style="font-weight: bolder">Comparisons</h2>
+      <p class="comparisonsp1">
+        Once in the comparison page, drag and drop your files to get started
+        with the comparison process.
+      </p>
+      <p class="comparisonsp2">
+        Each comparison has a dedicated viewer URL at
+        <strong>/comparisons/viewer/{account_id}/{identifier}</strong> which
+        gives users a side-by-side comparison of the documents. It displays a
+        loading animation while the comparison is being processed. See the
+        <u><strong>comparison viewer</strong></u> reference for more
+        information.
+      </p>
+    </section>
+    <hr />
+    <section class="my-5" id="simple-example">
+      <h3 style="font-weight: bolder">Simple Example</h3>
+      <p>
+        Let's try submitting and viewing a comparison. Here's what you'll need;
+      </p>
+      <ul>
+        <li>Access to a Quelea2 Excel Compare account.</li>
+        <li>At least two documents of excel or csv format to compare.</li>
+      </ul>
+      <img src="{% static 'images/frame1.png' %}" />
+    </section>
+    <hr />
+    <section class="creating-comparison my-5" id="creating-comparison">
+      <h3 style="font-weight: bolder">Creating the Comparison</h3>
+      <p class="creating-comparisonp1">
+        To create a comparison, log in to your account, then, from the homepage,
+        navigate to the comparison page to gain access to the workspace.
+      </p>
+      <p class="creating-comparisonp2">
+        Drag and drop your files into the fields provided and wait for the
+        magic.
+      </p>
+      <img src="{% static 'images/frame1.png' %}" />
+    </section>
+    <hr />
+    <section class="interpreting-response my-5" id="interpreting-response">
+      <h3 style="font-weight: bolder">Interpreting the response</h3>
+      <p>
+        Once the comparison is processed, you'll get a workspace editor similar
+        to the excel editor. On it, words will be highlighted to represent the
+        common and conflicting words and phrases. You can then choose to either
+        delete the words, merge them or edit them.
+      </p>
+    </section>
+    <hr />
+    <section class="finishing-up my-5" id="finishing-up">
+      <h3 style="font-weight: bolder">Finishing up</h3>
+      <p class="finishing-upp1">
+        After choosing the actions to take on the file, you can either decide to
+        download the resultantfile, store it, or discard it. You can also decide
+        to store one or both of the files being compared, download one or both
+        of the files being compoared or discard one of the files being compared.
+      </p>
+      <p class="finishing-upp2">
+        Once discarded, they will be cleared from our database, making retrieval
+        impossible.
+      </p>
+    </section>
+    <hr />
+    <section class="security-auth my-5" id="security-auth">
+      <h2 style="font-weight: bolder">Security and Authentication</h2>
+      <p>
+        All the comparisons are private by default, and require authorization to
+        view. (You must explicitly mark them as public, if you want to grant
+        public access.)
+      </p>
+      <p>
+        See the <u><strong>security and authentication</strong></u> reference
+        for how your credentials are used, and how to display private
+        comparisons.
+      </p>
+    </section>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %} {% block content %}
+<div class="d-flex align-items-center">
+  <img
+    src="{{request.user.image.url}}"
+    alt=""
+    style="
+      width: 80px;
+      border: 1px solid rgba(0, 0, 0, 0.3);
+      border-radius: 50%;
+    "
+  />
+  <div class="ms-3">
+    <h6 class="m-0">Welcome <strong>{{request.user.username}}</strong></h6>
+    <p class="m-0">good <span id="time"></span></p>
+  </div>
+</div>
+<a href="{% url 'update_profile_page' %}">Update Your Profile</a>
+<script>
+  let timeComp = document.getElementById("time");
+  let time = new Date().getHours();
+  if (time < 12) {
+    timeComp.textContent = "morning";
+  } else if (time < 16) {
+    timeComp.textContent = "afternoon";
+  } else if (time < 20) {
+    timeComp.textContent = "evening";
+  } else {
+    timeComp.textContent = "night";
+  }
+</script>
+{% endblock %}
