@@ -1,14 +1,9 @@
 {% extends 'base.html' %} {% block content %}
-{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
 <div class="table-container">
-  <div class="d-flex align-items-center justify-content-between mb-3">
-    <h3 class="m-0">Welcome {{request.user.username}}</h3>
+  <div
+    class="d-sm-flex align-items-center justify-content-between mb-3 d-block"
+  >
+    <h4 class="my-3">Welcome {{request.user.username}}</h4>
     <div class="button-group d-flex">
       <a href="/compare_csv" class="btn btn-info d-flex align-items-center"
         ><i class="bi bi-arrow-down-up"></i>&nbsp;<span>Compare CSV</span></a
@@ -17,33 +12,29 @@
       <a href="/upload_csv" class="btn btn-secondary d-flex align-items-center"
         ><i class="bi bi-upload"></i>&nbsp;<span>Upload CSV</span></a
       >
-      &nbsp;&nbsp;&nbsp;
-      <a href="/download_csv" class="btn btn-primary d-flex align-items-center"
-        ><i class="bi bi-download"></i>&nbsp;<span>Download CSV</span></a
-      >
     </div>
   </div>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">First Name</th>
-        <th scope="col">Last Name</th>
-        <th scope="col">Email</th>
-        <th scope="col">Phone Number</th>
-        <th scope="col">Stack</th>
-      </tr>
-    </thead>
+  <ul class="list-group">
     {% for x in csv %}
-    <tbody>
-      <tr>
-        <td>{{x.first_name}}</td>
-        <td>{{x.last_name}}</td>
-        <td>{{x.email}}</td>
-        <td>{{x.phone_number}}</td>
-        <td>{{x.track}}</td>
-      </tr>
-    </tbody>
+    <li
+      class="list-group-item d-sm-flex align-items-center justify-content-between d-block"
+    >
+      <a href="{% url 'view_csv_detail_page' x.id %}">{{x.file.name}}</a>
+      <div class="d-flex align-items-center justify-content-between">
+        {% if request.user == x.author %}
+        <a
+          href="{% url 'delete_csv_page' x.id %}"
+          class="btn btn-outline-danger me-2"
+          ><i class="bi bi-trash"></i
+        ></a>
+        {% endif %}
+        <a href="{{x.file.url}}" class="btn btn-outline-primary"
+          ><i class="bi bi-download"></i
+        ></a>
+      </div>
+    </li>
     {% endfor %}
-  </table>
+  </ul>
 </div>
+
 {% endblock %}

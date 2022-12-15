@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% block content %}
+<style>
+  table {
+    width: 100%;
+    padding: 20px;
+  }
+  th,
+  td {
+    text-align: center;
+    border: 1px solid black;
+  }
+</style>
+<div class="table-container">
+  <div
+    class="d-sm-flex align-items-center justify-content-between mb-3 d-block"
+  >
+    <h3 class="my-3">Welcome {{request.user.username}}</h3>
+    <div class="button-group d-flex">
+      <a
+        href="{% url 'view_csv_page' %}"
+        class="btn btn-primary d-flex align-items-center"
+        ><i class="bi bi-arrow-left"></i>&nbsp;<span>Go Back</span></a
+      >
+    </div>
+  </div>
+  {{df|safe}}
+</div>
+{% endblock %}

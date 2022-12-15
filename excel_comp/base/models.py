@@ -20,20 +20,25 @@ TRACK_CHOICES = (
     ('PRODUCT_DESIGN', 'product_design')
 )
 
-class Student_csv(models.Model):
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-    email = models.EmailField(max_length=100)
-    phone_number = models.IntegerField()
-    track = models.CharField(max_length=20, choices = TRACK_CHOICES)
+# class Student_csv(models.Model):
+#     first_name = models.CharField(max_length=100)
+#     last_name = models.CharField(max_length=100)
+#     email = models.EmailField(max_length=100)
+#     phone_number = models.IntegerField()
+#     track = models.CharField(max_length=20, choices = TRACK_CHOICES)
+    # author = models.ForeignKey(User, on_delete=models.CASCADE)
     
-    def __str__(self):
-        return self.first_name
+    # def __str__(self):
+    #     return self.first_name
 
 class File(models.Model):
     file = models.FileField(upload_to="files")
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add = True)
 
     def __str__(self):
         return self.file.name
     
+    class Meta:
+        ordering = ['-created_at']
 

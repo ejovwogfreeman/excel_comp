@@ -38,7 +38,24 @@
   <body>
     <span>{% include 'components/navbar.html' %} </span>
     <div class="container" style="padding-top: 100px; padding-bottom: 20px">
-      {% block content %} {% endblock %}
+      {% if messages %}
+      <div class="messages">
+        {% for message in messages %}
+        <div
+          {%
+          if
+          message.tags
+          %}
+          class="alert alert-{{ message.tags }}"
+          {%
+          endif
+          %}
+        >
+          {{ message }}
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %} {% block content %} {% endblock %}
     </div>
     <span>{% include 'components/footer.html' %}</span>
   </body>

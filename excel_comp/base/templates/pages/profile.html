@@ -5,8 +5,10 @@
     alt=""
     style="
       width: 80px;
+      height: 80px;
       border: 1px solid rgba(0, 0, 0, 0.3);
       border-radius: 50%;
+      object-fit: contain;
     "
   />
   <div class="ms-3">
@@ -14,18 +16,50 @@
     <p class="m-0">good <span id="time"></span></p>
   </div>
 </div>
-<a href="{% url 'update_profile_page' %}">Update Your Profile</a>
-<script>
-  let timeComp = document.getElementById("time");
-  let time = new Date().getHours();
-  if (time < 12) {
-    timeComp.textContent = "morning";
-  } else if (time < 16) {
-    timeComp.textContent = "afternoon";
-  } else if (time < 20) {
-    timeComp.textContent = "evening";
-  } else {
-    timeComp.textContent = "night";
-  }
-</script>
-{% endblock %}
+<p class="mt-2">
+  {% if request.user.bio %} {{request.user.bio}} {% else %}
+  <span>Hi there...</span>
+  {% endif %}
+  <a href="{% url 'update_profile_page' %}"
+    ><i class="bi bi-pencil-square"></i
+  ></a>
+</p>
+
+<hr />
+<ul class="list-group mt-4">
+  <h4>Your Uploaded CSV</h4>
+  {% for x in csv %}
+  <li
+    class="list-group-item d-sm-flex align-items-center justify-content-between d-block"
+  >
+    <a href="{% url 'view_csv_detail_page' x.id %}">{{x.file.name}}</a>
+    <div class="d-flex align-items-center justify-content-between">
+      {% if request.user == x.author %}
+      <a
+        href="{% url 'delete_csv_page' x.id %}"
+        class="btn btn-outline-danger me-2"
+        ><i class="bi bi-trash"></i
+      ></a>
+      {% endif %}
+      <a href="{{x.file.url}}" class="btn btn-outline-primary"
+        ><i class="bi bi-download"></i
+      ></a>
+    </div>
+  </li>
+  {% endfor %}
+
+  <script>
+    let timeComp = document.getElementById("time");
+    let time = new Date().getHours();
+    if (time < 12) {
+      timeComp.textContent = "morning";
+    } else if (time < 16) {
+      timeComp.textContent = "afternoon";
+    } else if (time < 20) {
+      timeComp.textContent = "evening";
+    } else {
+      timeComp.textContent = "night";
+    }
+  </script>
+  {% endblock %}
+</ul>

@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block content %}{% load static %}
 <div class="row">
-  <div class="col-3">
+  <div class="col-lg-3 col-0">
     <ul class="side-bar list-group">
       <li class="list-group-item">
         <a href="{% url 'documentation_page' %}" style="font-weight: bolder"
@@ -39,7 +39,7 @@
       </li>
     </ul>
   </div>
-  <div class="col-9">
+  <div class="col-lg-9 col-12">
     <section class="welcome mb-5">
       <h1 style="font-weight: bolder; color: rgb(37, 111, 101)">
         Documentation
@@ -110,7 +110,7 @@
         <li>Access to a Quelea2 Excel Compare account.</li>
         <li>At least two documents of excel or csv format to compare.</li>
       </ul>
-      <img src="{% static 'images/frame1.png' %}" />
+      <img src="{% static 'images/frame1.png' %}" style="width: 100%" />
     </section>
     <hr />
     <section class="creating-comparison my-5" id="creating-comparison">
@@ -123,7 +123,7 @@
         Drag and drop your files into the fields provided and wait for the
         magic.
       </p>
-      <img src="{% static 'images/frame1.png' %}" />
+      <img src="{% static 'images/frame1.png' %}" style="width: 100%" />
     </section>
     <hr />
     <section class="interpreting-response my-5" id="interpreting-response">
